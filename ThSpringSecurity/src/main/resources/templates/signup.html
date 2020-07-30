@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<form class="signup-form" action="/member" method="POST">
+<form class="signup-form" action="/member/signup" method="POST">
   <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
   <div class="row">
     <div class="input-field col s12">
@@ -25,7 +25,7 @@
       <label for="password">Password</label>
     </div>
   </div>
-  <input class="signup-btn waves-effect waves-light btn" type="submit" value="°¡ÀÔÇÏ±â" />
+  <input class="signup-btn waves-effect waves-light btn" type="submit" value="ê°€ìž…í•˜ê¸°" />
 </form>
 </body>
 </html>

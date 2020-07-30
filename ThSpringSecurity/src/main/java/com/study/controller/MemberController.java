@@ -16,17 +16,23 @@ import com.study.repository.MemberRepository;
 @RequestMapping("/member")
 public class MemberController {
 	@Autowired
-	MemberRepository memberRepositry;
+	private MemberRepository memberRepository;
 	
-	@PostMapping("")
-	public String create(Member member) {	
-		System.out.println(member);
+	@PostMapping("/signup")
+	public String signup(Member vo) {
 		MemberRole role = new MemberRole();
 		BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-		member.setUpw(passwordEncoder.encode(member.getUpw()));
-		role.setRoleName("BASIC");
-		member.setRoles(Arrays.asList(role));
-		memberRepositry.save(member);
+		vo.setUpw(passwordEncoder.encode(vo.getUpw()));
+		role.setRoleName("MEMBER");
+		vo.setRoles(Arrays.asList(role));
+		memberRepository.save(vo);
+		
 		return "redirect:/";
+	}
+	
+	@PostMapping("/signin")
+	public String signin(Member vo) {
+		System.out.println(vo);
+		return "/login/result";
 	}
 }

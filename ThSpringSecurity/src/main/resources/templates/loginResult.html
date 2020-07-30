@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+<meta charset="UTF-8">
+<title>LoginResult</title>
+</head>
+<body>
+	<span sec:authentication="name"></span> 환영한다! </br>
+	<span sec:authentication="principal.authorities"></span>
+	싴휴리티 성콩!<br/>
+	<button onclick="location.href='/myinfo'">멤버만 갈 수 있는 그러한 페이지</button><br/>
+	<button onclick="location.href='/admin'">너가 어드민이면 갈 수 있는 페이지</button>
+</body>
+</html>
