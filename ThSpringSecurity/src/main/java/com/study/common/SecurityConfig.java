@@ -2,6 +2,7 @@ package com.study.common;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -51,10 +52,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .formLogin()
                         	.loginPage("/login")
                         	.loginProcessingUrl("/login")
-                        	.defaultSuccessUrl("/login/result")
+                        	.defaultSuccessUrl("/loginResult")
                         	.failureUrl("/loginFail")
                         	.permitAll()
                         .and()// 403 예외처리 핸들링
-                        	.exceptionHandling().accessDeniedPage("/user/denied");
+                        	.exceptionHandling().accessDeniedPage("/denied");
+	}
+	
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		// TODO Auto-generated method stub
+		return super.authenticationManagerBean();
 	}
 }
